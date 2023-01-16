@@ -1,0 +1,14 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: glusterfs-pvc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: glusterfs-storage-class
+spec:
+#  storageClassName: glusterfs-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+

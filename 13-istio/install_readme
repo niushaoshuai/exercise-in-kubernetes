@@ -1,0 +1,8 @@
+kubectl create namespace istio-system
+wget https://github.com/istio/istio/releases/download/1.16.1/istio-1.16.1-linux-amd64.tar.gz
+tar zxf istio-1.16.1-linux-amd64.tar.gz
+export PATH="$PATH:/root/deep-in-kubernetes/13-istio/istio-1.16.1/bin/"
+istioctl install --set profile=demo -y
+kubectl apply -f istio-1.16.1/samples/addons
+# 每个node里面执行
+yum install socat -y  

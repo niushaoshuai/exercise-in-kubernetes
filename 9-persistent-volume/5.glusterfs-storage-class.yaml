@@ -1,0 +1,14 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: glusterfs-storage-class
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://192.168.1.31:30010"
+  clusterid: "3490e344ddaf90909bffd619e56cf146"
+  restauthenabled: "true"
+  restuser: "admin"
+  secretName: "heketi-secret"
+  secretNamespace: "default"
+#  volumetype:"replicate:3"
+#reclaimPolicy: Delete

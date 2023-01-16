@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-demo-taint
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: web-demo-taint
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-demo-taint
+    spec:
+      containers:
+      - name: web-demo-taint
+        image: hub.mooc.com/kubernetes/web:v1
+        ports:
+        - containerPort: 8080
+      #第一种表达方式，effect可选值：NoSchedule、NoExecute
+      tolerations:
+      - key: "key"
+        operator: "Equal"
+        value: "value"
+        effect: "NoSchedule"
+      #第二种表达方式
+      #tolerations:
+      #- key: "key"
+      #  operator: "Exists"
+      #  effect: "NoSchedule"
